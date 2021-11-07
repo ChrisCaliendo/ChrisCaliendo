@@ -1,0 +1,60 @@
+body{
+    background: rgb(117, 115, 114) !important;
+    
+}
+
+.hide{
+    visibility: hidden;
+}
+
+#nameInput{
+    width: 6cm;
+}
+
+#testTitle{
+    text-align: center;
+}
+
+#quizSection{
+    background-color: aliceblue;
+    padding: 30px;
+    min-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+#choices{
+    text-align: center;
+    vertical-align: middle;
+}
+
+#praise{
+    background:rgb(107, 201, 92) !important;
+    font-size:1cm;
+    font-family:'Lucida Sans';
+}
+
+#badAnswer{
+    background:rgb(224, 174, 161) !important;
+    font-size:0.5cm;
+    font-family:'Lucida Sans';
+}
+
+#descBox{
+    background:lavender !important;
+    vertical-align: middle;
+}
+
+#answerInput{
+    text-size-adjust: auto;
+}
+
+#test{
+    font-size: large;
+
+}
+
+#scoreboardSection{
+    background-color:lavenderblush;
+}

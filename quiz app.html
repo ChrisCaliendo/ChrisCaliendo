@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quizAppCSS.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="quizAppJS.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>
+    // compile the template
+    var template = Handlebars.compile("Handlebars <b>{{doesWhat}}</b>");
+     // execute the compiled template and print the output to the console
+    console.log(template({ doesWhat: "rocks!" }));
+    </script>
+    
+    <title>Quiz App</title>
+</head>
+<body>
+    <div id="webpage_header" class="jumbotron">
+        <h1 class="display-3">Quiz App</h1>
+        <p class="lead"> 
+            This is a site made to administer a quiz and store your score of right and wrong answers.
+            The website will be able to remember your inputs with responsive design and give your final score.
+        </p>
+        <hr class="my-2">
+        <div id="sub_header">
+            <p></p>
+            <p class="lead" >
+                <button id="start_button" class="btn btn-light btn-lg" role="button">Star a New Test</button>
+            </p>
+        </div>
+    </div>
+
+    <div id="application"></div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+</body>
+
+  <script id="startView" type="text/x-handlebars-template">
+    <div id="startLogin" class="container-sm" type="text/x-handlebars-template">
+        <h2 class="display-4">Player Input</h2>
+        <div class="form-group">
+            <form id="login" action="#test">
+                
+                <p>Before starting the test please state your name and pick the type of quiz you would like to take</p>
+                <br>
+
+                <label for="nameInput">Name: </label>
+                <br>
+
+                <div class="col-xs-2">
+                <input class="form-control" type="text" id="nameInput">
+                <br>
+                </div>
+    
+                <label for="description_input">Choose a Quiz:</label>
+                <br>
+
+                <div id="quizSelect">
+                    <label class="radio-inline"><input type="radio" id="quizOpt1" name="quizSelect" value="htmlQuestions" checked> HTML & CSS Quiz </label>
+                    <label class="radio-inline"><input type="radio" id="quizOpt2" name="quizSelect" value="bootstrapsQuestions"> Bootstraps Quiz </label>
+                </div>
+
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+  </script>
+  
+  <script id="testView" type="text/x-handlebars-template">
+    <div id="test">    
+        <h2 id="testTitle" > {{quizTitle}} Quiz </h2>
+        <div class="row">
+            <div id="quizSection" class="col-sm-8">
+                <h4 id="questionNum">Question {{this.current_question}}</h4>
+                <div id="questionView" class="row"> 
+                    
+                </div>
+            </div>
+
+            <div id="scoreboardSection" class="col-sm-4">
+                <div class="row">
+                <br>
+                <h6 class="container text-center">Scoreboard</h6>
+                <div class="container text-center">
+                    <p id="nameDisplay">Quiz Taker: {{this.username}}</p>
+                </div>
+                <br>
+                <div  class="container text-center">
+                    <h6>Questions Answered:</h6>
+                    <p id="questionCount">{{questions_complete}}/20</p>
+                </div>
+                <br>
+                <div  id="timeSlot" class="container text-center"></div>
+                <br>
+                <div  class="container text-center">
+                    <h6>Points:</h6>
+                    <p id="pointScore">{{this.score}}</p>
+                </div>
+                <br>
+                </div>
+            </div>          
+        </div>      
+    </div>
+  </script>
+
+  <script id="timer" type="text/x-handlebars-template">
+    <h6>Time:</h6>
+    <p>{{this.time}}</p>
+  </script>
+
+  <script id="CongratulationScreen" type="text/x-handlebars-template">
+    <div id="questionPrompt" class="container text-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="praise" class="col col-sm-6  border border-success rounded text-center">
+               {{this.message}}
+            </div>
+            <div class="col col-sm-3"></div>
+        </div>
+        <br>
+    </div> 
+  </script>    
+
+  <script id="CorrectionScreen" type="text/x-handlebars-template">
+    <div id="questionPrompt" class="container text-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="badAnswer" class="col col-sm-6  border border-danger rounded text-center">
+               <p>Your answer was incorrect :(</p>  
+               <p>The correct answer was '{{this.trueA}}'</p>
+               <p><button onclick=gotoNextQuestion(); class="btn btn-lg btn-danger" >Got it</button></p>
+            </div>
+            <div class="col col-sm-3"></div>
+        </div>
+        <br>
+    </div> 
+  </script>   
+
+  <script id="endScreen" type="text/x-handlebars-template">
+    <div id="questionPrompt" class="container text-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+               {{this.message}}
+            </div>
+            <div class="col col-sm-3"></div>
+        </div>
+        <br>
+    </div> 
+  </script>    
+
+  <script id="multiChoice" type="text/x-handlebars-template">
+    
+    <div id="questionPrompt" class="container text-center">
+        <div class="row justify-content-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+               {{this.qDesc}}
+            </div>
+            <div class="col col-sm-3"></div>
+        </div>
+        </div>
+        <br>
+    </div> 
+
+    <div class="container text-center">
+        <div  class="row justify-content-center">
+            <div class="col col-sm-1 "></div>
+            <div class="col col-sm-10  container " id="choices">
+    
+                <button onclick=checkAnswer(value); value="{{this.op1}}" class="btn btn-lg btn-outline-secondary" >{{this.op1}}</button>
+                <button onclick=checkAnswer(value); value="{{this.op2}}" class="btn btn-lg btn-outline-secondary">{{this.op2}}</button>
+                <button onclick=checkAnswer(value); value="{{this.op3}}" class="btn btn-lg btn-outline-secondary">{{this.op3}}</button>
+                <button onclick=checkAnswer(value); value="{{this.op4}}" class="btn btn-lg btn-outline-secondary">{{this.op4}}</button>
+            
+            </div>
+            <div class="col col-sm-1 "></div>
+    </div>
+    </div>
+     
+  </script>
+
+  <script id="binaryChoice" type="text/x-handlebars-template">
+    
+    <div id="questionPrompt" class="container text-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+               {{this.qDesc}}
+            </div>
+            <div class="col col-sm-3"></div>
+        </div>
+        <br>
+    </div> 
+
+    <div class="row">
+        <div class="col col-sm-2 "></div>
+        <div class="col col-sm-8">
+
+            <button onclick=checkAnswer(value); value="{{this.op1}}" class="btn btn-lg btn-outline-secondary" >{{this.op1}}</button>
+            <button onclick=checkAnswer(value); value="{{this.op2}}" class="btn btn-lg btn-outline-secondary">{{this.op2}}</button>
+        
+        </div>
+        <div class="col col-sm-2 "></div>
+    </div>
+     
+  </script>
+
+  <script id="trueOrFalse" type="text/x-handlebars-template">
+    
+    <div id="questionPrompt" class="container text-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+               {{this.qDesc}}
+            </div>
+            <div class="col col-sm-3"></div>
+        </div>
+        <br>
+    </div> 
+
+    <div class="row">
+        <div class="col col-sm-2 "></div>
+        <div class="col col-sm-8">
+
+            <button onclick=checkAnswer(value); value="true" class="btn btn-lg btn-outline-secondary" >True</button>
+            <button onclick=checkAnswer(value); value="false" class="btn btn-lg btn-outline-secondary">False</button>
+        
+        </div>
+        <div class="col col-sm-2 "></div>
+    </div>
+     
+  </script>
+
+  <script id="imageSelect" type="text/x-handlebars-template">
+    <div id="questionPrompt" class="container text-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+                <span id="questionDesc">
+                    {{this.qDesc}}
+                </span>
+            </div>
+            <div class="col col-sm-3"></div>
+
+        </div>
+        <div class="row"><br></div>
+    </div> 
+    <div>
+        <div>
+            <div class="col col-sm-2 buffer"></div>
+                <div class="col col-sm-8">
+                    <div class="row">
+                        <button><a href="{{this.op1}}"></a></button>
+                    </div>
+                    <div class="row">
+                        <button><a href="{{this.op2}}"></a></button>
+                    </div>
+                    <div class="row">
+                        <button><a href="{{this.op3}}"></a></button>
+                    </div>
+                    <div class="row">
+                        <button><a href="{{this.op4}}"></a></button>
+                    </div>
+                </div>
+            <div class="col col-sm-2 buffer"></div>
+          </div>
+    </div>
+  </script>
+
+  <script id="classQuestion" type="text/x-handlebars-template">
+    <div id="questionPrompt" class="container text-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+                <span id="questionDesc">
+                    {{this.qDesc}}
+                </span>
+            </div>
+            <div class="col col-sm-3"></div>
+
+        </div>
+        <div class="row"><br></div>
+    </div> 
+    <div>
+        <div>
+            <div class="col col-sm-2 buffer"></div>
+                <div class="col col-sm-8">
+                    <div class="row">
+                        <button class="{{this.op1}}">Text</button>
+                    </div>
+                    <div class="row">
+                        <button class="{{this.op2}}">Text</button>
+                    </div>
+                    <div class="row">
+                        <button class="{{this.op3}}">Text</button>
+                    </div>
+                    <div class="row">
+                        <button class="{{this.op4}}">Text</button>
+                    </div>
+                </div>
+            <div class="col col-sm-2 buffer"></div>
+          </div>
+    </div>
+  </script>
+
+  <script id="numInput" type="text/x-handlebars-template">
+    <div id="questionPrompt" class="container text-center">
+        
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+                <span id="questionDesc">
+                    This is a test
+                </span>
+            </div>
+            <div class="col col-sm-3"></div>
+
+        </div>
+        <div class="row"><br></div>
+    </div> 
+    <div>
+        <div>
+            <div class="col col-sm-3 buffer"></div>
+            <form action="">
+                <div class="col col-sm-5">
+                    <input type="text">
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            <div class="col col-sm-3 buffer"></div>
+          </div>
+    </div>
+  </script>
+
+
+
+  
+
+</html>
