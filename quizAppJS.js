@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     render_view("#startView", pageView, appState);
 
     document.querySelector("#application").onsubmit = function() {
+        
         if(appState.current_view == "#startView"){
 
             if(document.querySelector("#nameInput").value != ""){
@@ -155,8 +156,13 @@ function gotoNextQuestion(){
 }
 
 function endQuiz(){
-    appState.finalTime = time.elapedTime
-    render_view("#endScreen",  qView, appState);
+    appState.finalTime = time.elapedTime;
+    var endView = "#badEndScreen";
+    var calculation = appState.score/appState.quiz_length;
+    if(calculation > 0.8){
+        endView = "#goodEndScreen";
+    }
+    render_view(endView, qView, appState);
 }
 
 function restart(){
