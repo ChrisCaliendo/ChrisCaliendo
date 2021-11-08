@@ -41,6 +41,12 @@ body{
     font-family:'Lucida Sans';
 }
 
+#gameOver{
+    background:rgb(224, 222, 161) !important;
+    font-size:0.5cm;
+    font-family:'Lucida Sans';
+}
+
 #descBox{
     background:lavender !important;
     vertical-align: middle;
