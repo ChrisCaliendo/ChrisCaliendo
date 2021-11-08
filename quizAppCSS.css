@@ -42,7 +42,13 @@ body{
 }
 
 #gameOver{
-    background:rgb(224, 222, 161) !important;
+    background:rgb(224, 174, 161) !important;
+    font-size:0.5cm;
+    font-family:'Lucida Sans';
+}
+
+#pass{
+    background:rgb(107, 201, 92) !important;
     font-size:0.5cm;
     font-family:'Lucida Sans';
 }
