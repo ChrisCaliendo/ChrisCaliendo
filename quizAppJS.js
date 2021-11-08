@@ -8,15 +8,16 @@ const appState = {
     current_question : 0,
     questions_complete: 0,
     score: 0,
+    finalTime: new Date,
     current_model : {}
 }
 
 const time = {
     startTime : 0,
-    stopper : false,
     elapedTime : new Date
 }
 
+//var interval = setInterval(message, 1000);
 
 const pageView = "#application"
 const qView = "#questionView"
@@ -46,8 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             getQuizLength();
             render_question(1);
             
-            
-            setTimeout(toggleTimer(true), 1000);
+            //activateTimer(true, false);
         }
         return false;
     }
@@ -104,9 +104,34 @@ function checkAnswer(answer){
         Congratulate()
     }
     else{
-        render_view("#CorrectionScreen",qView,appState.current_model);
+        correctUser()
     }
 }
+
+function correctUser(){
+    if(appState.current_model.qType == "classQuestion" || "styleQuestion"){
+        switch (appState.current_model.trueA) {
+            case appState.current_model.op1:
+                appState.current_model.trueA = "Option 1";
+              break;
+            case appState.current_model.op2:
+                appState.current_model.trueA = "Option 2";
+              break;
+            case appState.current_model.op3:
+                appState.current_model.trueA = "Option 3";
+              break;
+            case appState.current_model.op4:
+                appState.current_model.trueA = "Option 4";
+              break;
+            default:
+                
+              break;
+        }
+    }
+    
+    render_view("#CorrectionScreen",qView,appState.current_model);
+}
+
 
 function Congratulate(){
     var praise = ["Good Job!", "Nice Work!", "Great!", "Excellent!", "Amazing!", "Brilliant!"]
@@ -130,45 +155,34 @@ function gotoNextQuestion(){
 }
 
 function endQuiz(){
-
+    appState.finalTime = time.elapedTime
+    render_view("#endScreen",  qView, appState);
 }
 
-function toggleTimer(toggle){
-    
-    if(toggle == true){
-        stopper = false;
-        startTime = new Date();
-        timer();
+function restart(){
+    appState.username = "Player";
+    appState.quizType = "";
+    appState.quizTitle = "";
+    appState.current_question = 0;
+    appState.questions_complete= 0;
+    appState.score = 0;
+    render_view("#startView", pageView, appState);
+}
+
+function activateTimer(onOrOff, repeat){
+    if(repeat==false){
+        time.timerOn = onOrOff;
+        time.startTime = new Date().getTime();
     }
-    else if(toggle == false){
-        stopper == true
+    if(time.timerOn==true){
+        setTimeout(timer(),1000)
     }
 }
 
 function timer(){
     if(appState.current_view == qView){
-        
-        elapedTime = new Date().getTime() - startTime;
-        alert(elapedTime);
+        time.elapedTime = new Date().getTime() - time.startTime;
         render_view("#timeSlot","#timer",time);
     }
-    timerCheck();
 }
-
-function timerCheck(){
-    if(stopper == true){
-        return;
-    } 
-    setTimeout(timer(), 1000);
-}
-
-
-
-
-
-
-
-
-
-
 
