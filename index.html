@@ -145,15 +145,31 @@
     </div> 
   </script>   
 
-  <script id="endScreen" type="text/x-handlebars-template">
+  <script id="badEndScreen" type="text/x-handlebars-template">
     <div id="questionPrompt" class="container text-center">
         <div class="row align-items-center">
             <div class="col col-sm-3"></div>
             <div id="gameOver" class="col col-sm-6  border border-danger rounded text-center">
                <h6>You Finished the Test</h6>
                <p>Your final score was:{{this.score}} out of {{this.quiz_length}}</p>  
-               <p>Your time was {{this.finalTime}}</p>
-               <p><button onclick=restart(); class="btn btn-lg btn-warning" >Return to Start</button></p>
+               <p>Sorry {{this.username}}, you fail the quiz</p>
+               <p><button onclick=restart(); class="btn btn-lg btn-danger" >Return to Start</button></p>
+            </div>
+            <div class="col col-sm-3"></div>
+        </div>
+        <br>
+    </div> 
+  </script>    
+
+  <script id="goodEndScreen" type="text/x-handlebars-template">
+    <div id="questionPrompt" class="container text-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="pass" class="col col-sm-6  border border-success rounded text-center">
+               <h6>You Finished the Test</h6>
+               <p>Your final score was:{{this.score}} out of {{this.quiz_length}}</p>  
+               <p>Congratulations {{this.username}}! You pass the quiz</p>
+               <p><button onclick=restart(); class="btn btn-lg btn-success" >Return to Start</button></p>
             </div>
             <div class="col col-sm-3"></div>
         </div>
