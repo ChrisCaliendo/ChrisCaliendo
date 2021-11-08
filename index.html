@@ -23,7 +23,7 @@
     <div id="webpage_header" class="jumbotron">
         <h1 class="display-3">Quiz App</h1>
         <p class="lead"> 
-            This is a site made to administer a quiz and store your score of right and wrong answers. Hello
+            This is a site made to administer a quiz and store your score of right and wrong answers.
             The website will be able to remember your inputs with responsive design and give your final score.
         </p>
         <hr class="my-2">
@@ -149,8 +149,11 @@
     <div id="questionPrompt" class="container text-center">
         <div class="row align-items-center">
             <div class="col col-sm-3"></div>
-            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
-               {{this.message}}
+            <div id="gameOver" class="col col-sm-6  border border-danger rounded text-center">
+               <h6>You Finished the Test</h6>
+               <p>Your final score was:{{this.score}} out of {{this.quiz_length}}</p>  
+               <p>Your time was {{this.finalTime}}</p>
+               <p><button onclick=restart(); class="btn btn-lg btn-warning" >Return to Start</button></p>
             </div>
             <div class="col col-sm-3"></div>
         </div>
@@ -191,8 +194,8 @@
   </script>
 
   <script id="binaryChoice" type="text/x-handlebars-template">
-    
     <div id="questionPrompt" class="container text-center">
+        <div class="row justify-content-center">
         <div class="row align-items-center">
             <div class="col col-sm-3"></div>
             <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
@@ -200,25 +203,52 @@
             </div>
             <div class="col col-sm-3"></div>
         </div>
+        </div>
         <br>
     </div> 
 
-    <div class="row">
-        <div class="col col-sm-2 "></div>
-        <div class="col col-sm-8">
-
-            <button onclick=checkAnswer(value); value="{{this.op1}}" class="btn btn-lg btn-outline-secondary" >{{this.op1}}</button>
-            <button onclick=checkAnswer(value); value="{{this.op2}}" class="btn btn-lg btn-outline-secondary">{{this.op2}}</button>
-        
-        </div>
-        <div class="col col-sm-2 "></div>
+    <div class="container text-center">
+        <div  class="row justify-content-center">
+            <div class="col col-sm-1 "></div>
+            <div class="col col-sm-10  container " id="choices">
+                <button onclick=checkAnswer(value); value="{{this.op1}}" class="btn btn-lg btn-outline-secondary" >{{this.op1}}</button>
+                <button onclick=checkAnswer(value); value="{{this.op2}}" class="btn btn-lg btn-outline-secondary">{{this.op2}}</button>     
+            </div>
+            <div class="col col-sm-1 "></div>
+    </div>
     </div>
      
   </script>
 
   <script id="trueOrFalse" type="text/x-handlebars-template">
-    
     <div id="questionPrompt" class="container text-center">
+        <div class="row justify-content-center">
+        <div class="row align-items-center">
+            <div class="col col-sm-3"></div>
+            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+               True or False: {{this.qDesc}}
+            </div>
+            <div class="col col-sm-3"></div>
+        </div>
+        </div>
+        <br>
+    </div> 
+
+    <div class="container text-center">
+        <div  class="row justify-content-center">
+            <div class="col col-sm-1 "></div>
+            <div class="col col-sm-10  container " id="choices">
+                <button onclick=checkAnswer(value); value="true" class="btn btn-lg btn-outline-secondary" >True</button>
+                <button onclick=checkAnswer(value); value="false" class="btn btn-lg btn-outline-secondary">False</button>     
+            </div>
+            <div class="col col-sm-1 "></div>
+    </div>
+     
+  </script>
+  
+  <script id="imageSelect" type="text/x-handlebars-template">
+    <div id="questionPrompt" class="container text-center">
+        <div class="row justify-content-center">
         <div class="row align-items-center">
             <div class="col col-sm-3"></div>
             <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
@@ -226,126 +256,115 @@
             </div>
             <div class="col col-sm-3"></div>
         </div>
+        </div>
         <br>
     </div> 
 
-    <div class="row">
-        <div class="col col-sm-2 "></div>
-        <div class="col col-sm-8">
-
-            <button onclick=checkAnswer(value); value="true" class="btn btn-lg btn-outline-secondary" >True</button>
-            <button onclick=checkAnswer(value); value="false" class="btn btn-lg btn-outline-secondary">False</button>
-        
-        </div>
-        <div class="col col-sm-2 "></div>
-    </div>
-     
-  </script>
-
-  <script id="imageSelect" type="text/x-handlebars-template">
-    <div id="questionPrompt" class="container text-center">
-        <div class="row align-items-center">
-            <div class="col col-sm-3"></div>
-            <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
-                <span id="questionDesc">
-                    {{this.qDesc}}
-                </span>
+    <div class="container text-center">
+        <div  class="row justify-content-center">
+            <div class="col col-sm-1 "></div>
+            <div class="col col-sm-10  container " id="choices">
+                <button onclick=checkAnswer(value); value="{{this.op1}}" class="btn btn-lg btn-outline-secondary"><a href="{{this.op1}}"></a></button>
+                <button onclick=checkAnswer(value); value="{{this.op2}}" class="btn btn-lg btn-outline-secondary"><a href="{{this.op2}}"></a></button>   
+                <button onclick=checkAnswer(value); value="{{this.op3}}" class="btn btn-lg btn-outline-secondary"><a href="{{this.op3}}"></a></button>
+                <button onclick=checkAnswer(value); value="{{this.op4}}" class="btn btn-lg btn-outline-secondary"><a href="{{this.op4}}"></a></button>   
             </div>
-            <div class="col col-sm-3"></div>
-
-        </div>
-        <div class="row"><br></div>
-    </div> 
-    <div>
-        <div>
-            <div class="col col-sm-2 buffer"></div>
-                <div class="col col-sm-8">
-                    <div class="row">
-                        <button><a href="{{this.op1}}"></a></button>
-                    </div>
-                    <div class="row">
-                        <button><a href="{{this.op2}}"></a></button>
-                    </div>
-                    <div class="row">
-                        <button><a href="{{this.op3}}"></a></button>
-                    </div>
-                    <div class="row">
-                        <button><a href="{{this.op4}}"></a></button>
-                    </div>
-                </div>
-            <div class="col col-sm-2 buffer"></div>
-          </div>
+            <div class="col col-sm-1 "></div>
     </div>
   </script>
 
   <script id="classQuestion" type="text/x-handlebars-template">
+
     <div id="questionPrompt" class="container text-center">
+        <div class="row justify-content-center">
         <div class="row align-items-center">
             <div class="col col-sm-3"></div>
             <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
-                <span id="questionDesc">
-                    {{this.qDesc}}
-                </span>
+               {{this.qDesc}}
             </div>
             <div class="col col-sm-3"></div>
-
         </div>
-        <div class="row"><br></div>
+        </div>
+        <br>
     </div> 
-    <div>
-        <div>
-            <div class="col col-sm-2 buffer"></div>
-                <div class="col col-sm-8">
-                    <div class="row">
-                        <button class="{{this.op1}}">Text</button>
-                    </div>
-                    <div class="row">
-                        <button class="{{this.op2}}">Text</button>
-                    </div>
-                    <div class="row">
-                        <button class="{{this.op3}}">Text</button>
-                    </div>
-                    <div class="row">
-                        <button class="{{this.op4}}">Text</button>
-                    </div>
-                </div>
-            <div class="col col-sm-2 buffer"></div>
-          </div>
+
+    <div class="container text-center">
+        <div  class="row justify-content-center">
+            <div class="col col-sm-1 "></div>
+            <div class="col col-sm-10  container " id="choices">
+    
+                <button onclick=checkAnswer(value); value="{{this.op1}}" class="btn btn-lg {{this.op1}}">Option 1</button>
+                <button onclick=checkAnswer(value); value="{{this.op2}}" class="btn btn-lg {{this.op2}}">Option 2</button>
+                <button onclick=checkAnswer(value); value="{{this.op3}}" class="btn btn-lg {{this.op3}}">Option 3</button>
+                <button onclick=checkAnswer(value); value="{{this.op4}}" class="btn btn-lg {{this.op4}}">Option 4</button>
+
+            </div>
+            <div class="col col-sm-1 "></div>
     </div>
+    </div>
+
   </script>
 
   <script id="numInput" type="text/x-handlebars-template">
     <div id="questionPrompt" class="container text-center">
-        
+
+        <div id="questionPrompt" class="container text-center">
+            <div class="row justify-content-center">
+            <div class="row align-items-center">
+                <div class="col col-sm-3"></div>
+                <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
+                   {{this.qDesc}}
+                </div>
+                <div class="col col-sm-3"></div>
+            </div>
+            </div>
+            <br>
+        </div> 
+    
+        <div class="container text-center">
+            <div  class="row justify-content-center">
+                <div class="col col-sm-1 "></div>
+                <div class="col col-sm-10  container " id="choices">
+                    <form class="form-group" onsubmit=checkAnswer(answerInput.value)> 
+                        <input class="form-control" name="answerInput" type="text">
+                        <button class="form-control" type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="col col-sm-1 "></div>
+        </div>
+  </script>
+
+  <script id="styleQuestion" type="text/x-handlebars-template">
+
+    <div id="questionPrompt" class="container text-center">
+        <div class="row justify-content-center">
         <div class="row align-items-center">
             <div class="col col-sm-3"></div>
             <div id="descBox" class="col col-sm-6  border border-secondary rounded text-center">
-                <span id="questionDesc">
-                    This is a test
-                </span>
+               {{this.qDesc}}
             </div>
             <div class="col col-sm-3"></div>
-
         </div>
-        <div class="row"><br></div>
+        </div>
+        <br>
     </div> 
-    <div>
-        <div>
-            <div class="col col-sm-3 buffer"></div>
-            <form action="">
-                <div class="col col-sm-5">
-                    <input type="text">
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-            <div class="col col-sm-3 buffer"></div>
-          </div>
+
+    <div class="container text-center">
+        <div  class="row justify-content-center">
+            <div class="col col-sm-1 "></div>
+            <div class="col col-sm-10  container " id="choices">
+    
+                <button onclick=checkAnswer(value); value="{{this.op1}}" style="{{this.op1}}">Option 1</button>
+                <button onclick=checkAnswer(value); value="{{this.op2}}" style="{{this.op2}}">Option 2</button>
+                <button onclick=checkAnswer(value); value="{{this.op3}}" style="{{this.op3}}">Option 3</button>
+                <button onclick=checkAnswer(value); value="{{this.op4}}" style="{{this.op4}}">Option 4</button>
+
+            </div>
+            <div class="col col-sm-1 "></div>
     </div>
+    </div>
+
   </script>
-
-
 
   
 
