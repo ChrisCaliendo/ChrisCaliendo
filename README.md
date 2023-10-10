@@ -1,6 +1,6 @@
 ### Hi there 👋 My name is Christian Caliendo
 I...
-- am interested in Data Science & Analytics, Full Stack Development, and Game Development
+- am interested in Software Development, Full Stack Development, and Game Development
 - graduated from St. Johns University with a bachelors in Computer Science
 
   ---
