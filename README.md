@@ -6,12 +6,12 @@ I...
 
   ---
 
-💪 I'm very proficient with Java, C#, Python and Javascript
-🔭 I’m currently working on a Tinder Style Phone Dating App and an Augmented Reality Project
-🌱 I’m currently learning React Native, Unreal Engine 5 and Flutter* [![Next][Next.js]][Next-url]
-📫 To reach me: 
-  My Linkedin: 
-  My Email christiantcaliendo@gmail.com
+1. 💪 I'm very proficient with Java, C#, Python and Javascript
+2. 🔭 I’m currently working on a Tinder Style Phone Dating App and an Augmented Reality Project
+3. 🌱 I’m currently learning React Native, Unreal Engine 5 and Flutter* [![Next][Next.js]][Next-url]
+4. 📫 To reach me: 
+5.   My Linkedin: 
+6.   My Email christiantcaliendo@gmail.com
 <!--
 **ChrisCaliendo/ChrisCaliendo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
