@@ -1,4 +1,10 @@
 ### Hi there 👋 My name is Christian Caliendo
+I...
+- am interested in Data Processing & Analytics, Machine Learning, Full Stack Development
+- am proficient in JavaScript, Python & C++ and currently learning Golang and R
+- recently graduated high school with associate degrees in Math, Comp Sci & Physics
+
+  ---
 
 💪 I'm very proficient with Java, C#, Python and Javascript
 🔭 I’m currently working on a Tinder Style Phone Dating App and an Augmented Reality Project
