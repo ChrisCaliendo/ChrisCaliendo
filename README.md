@@ -10,8 +10,8 @@ I...
 * 🔭 I’m currently working on a Tinder Style Phone Dating App and an Augmented Reality Project
 * 🌱 I’m currently learning React Native, Unreal Engine 5 and Flutter* [![Next][Next.js]][Next-url]
 * 📫 To reach me: 
-    My Linkedin: https://www.linkedin.com/in/christiancaliendo
-    My Email christiantcaliendo@gmail.com
+   - My Linkedin: https://www.linkedin.com/in/christiancaliendo
+   - My Email christiantcaliendo@gmail.com
 <!--
 **ChrisCaliendo/ChrisCaliendo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
