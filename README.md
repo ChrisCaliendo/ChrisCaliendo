@@ -1,16 +1,16 @@
 ### Hi there 👋 My name is Christian Caliendo
 I...
-- am interested in Data Processing & Analytics, Machine Learning, Full Stack Development
-- am proficient in JavaScript, Python & C++ and currently learning Golang and R
-- recently graduated high school with associate degrees in Math, Comp Sci & Physics
+- am interested in Data Processing & Analytics, Full Stack Development, and Game Development
+- graduated from St. Johns University with a bachelors in Computer Science
 
   ---
 
 * 💪 I'm very proficient with Java, C#, Python and Javascript
+* 🖥  My latest project was a React based Steam Review Scraper with a Python/Flask powered backend
 * 🔭 I’m currently working on a Tinder Style Phone Dating App and an Augmented Reality Project
 * 🌱 I’m currently learning React Native, Unreal Engine 5 and Flutter* [![Next][Next.js]][Next-url]
 * 📫 To reach me: 
-*   My Linkedin: 
+*   My Linkedin: https://www.linkedin.com/in/christian-caliendo-7857a5232/
 *   My Email christiantcaliendo@gmail.com
 <!--
 **ChrisCaliendo/ChrisCaliendo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
