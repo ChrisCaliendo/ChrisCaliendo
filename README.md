@@ -1,4 +1,4 @@
-#### Hi there 👋 My name is Christian Caliendo
+## Hi there 👋 My name is Christian Caliendo
 I...
 - am interested in Software Development, Full Stack Development, and Game Development
 - graduated from St. Johns University with a bachelors in Computer Science
