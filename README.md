@@ -8,7 +8,7 @@ I...
 * 💪 I'm very proficient with Java, C#, Python, Javascript and React
 * 🖥  My latest project is a React based Steam Review Scraper with a Python/Flask powered backend
 * 🔭 I’m currently working on a Tinder Style Phone Dating App and an Augmented Reality Project
-* 🌱 I’m currently learning React Native, Unreal Engine 5 and Flutter
+* 🌱 I’m currently learning Angular and Amazon Web Services
 * 📫 To reach me: 
    - My Linkedin: https://www.linkedin.com/in/christiancaliendo
    - My Email: christiantcaliendo@gmail.com
